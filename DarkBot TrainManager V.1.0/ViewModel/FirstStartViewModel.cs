@@ -16,6 +16,20 @@ namespace DarkBotTrainManager.ViewModel
             _firstStart = firstStart;
         }
 
+        /// <summary>
+        /// Commands
+        /// </summary>
+        #region
+
+        private RelayCommandService _saveCommand;
+
+        #endregion
+
+        /// <summary>
+        /// Fields
+        /// </summary>
+        #region 
+
         public string DarkBotFilePath
         {
             get { return _firstStart.DarkBotFilePath; }
@@ -26,6 +40,16 @@ namespace DarkBotTrainManager.ViewModel
             }
         }
 
+        public string DarkBotInstallFolderPath
+        {
+            get { return _firstStart.DarkBotInstallFolderPath; }
+            set
+            {
+                _firstStart.DarkBotInstallFolderPath = value;
+                OnPropertyChanged(nameof(DarkBotInstallFolderPath));
+            }
+        }
 
+        #endregion
     }
 }
