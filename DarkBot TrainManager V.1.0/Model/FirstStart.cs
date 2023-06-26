@@ -10,7 +10,7 @@ namespace DarkBotTrainManager.Model
     public class FirstStart : DefaultNotifyPropertyChangedService
     {
         private string _darkBotFilePath;
-        private string _darkBotFolderPath;
+        private string _darkBotInstallFolderPath;
 
         public string DarkBotFilePath
         {
@@ -22,13 +22,13 @@ namespace DarkBotTrainManager.Model
             }
         }
 
-        public string DarkBotFolderPath
+        public string DarkBotInstallFolderPath
         {
-            get { return _darkBotFolderPath; }
+            get { return _darkBotInstallFolderPath; }
             set
             {
-                _darkBotFolderPath = value;
-                OnPropertyChanged(nameof(DarkBotFolderPath));
+                _darkBotInstallFolderPath = value;
+                OnPropertyChanged(nameof(DarkBotInstallFolderPath));
             }
         }
     }

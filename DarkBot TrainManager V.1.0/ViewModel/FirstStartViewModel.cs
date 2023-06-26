@@ -11,15 +11,21 @@ namespace DarkBotTrainManager.ViewModel
     public class FirstStartViewModel : DefaultNotifyPropertyChangedService
     {
         private FirstStart _firstStart;
-
-        public FirstStart FirstStart
+        public FirstStartViewModel(FirstStart firstStart)
         {
-            get { return _firstStart; }
+            _firstStart = firstStart;
+        }
+
+        public string DarkBotFilePath
+        {
+            get { return _firstStart.DarkBotFilePath; }
             set
             {
-                _firstStart = value;
-                OnPropertyChanged(nameof(FirstStart));
+                _firstStart.DarkBotFilePath = value;
+                OnPropertyChanged(nameof(DarkBotFilePath));
             }
         }
+
+
     }
 }
