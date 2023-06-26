@@ -7,7 +7,7 @@ using DarkBotTrainManager.Services;
 
 namespace DarkBotTrainManager.Model
 {
-    public class FirstStart : DefaultNotifyPropertyChangedService
+    public class FirstStartUp : DefaultNotifyPropertyChangedService
     {
         private string _darkBotFilePath;
         private string _darkBotInstallFolderPath;

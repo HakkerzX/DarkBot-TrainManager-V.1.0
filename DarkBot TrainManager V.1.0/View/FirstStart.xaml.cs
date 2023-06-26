@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DarkBotTrainManager.ViewModel;
+using DarkBotTrainManager.Model;
 
 namespace DarkBotTrainManager.View
 {
@@ -20,11 +21,11 @@ namespace DarkBotTrainManager.View
     /// </summary>
     public partial class FirstStart : Window
     {
-        public FirstStart()
+        public FirstStart(FirstStartUp firstStartUp)
         {
             InitializeComponent();
 
-            DataContext = new FirstStartViewModel(new Model.FirstStart());
+            DataContext = new FirstStartUpViewModel(firstStartUp);
         }
     }
 }

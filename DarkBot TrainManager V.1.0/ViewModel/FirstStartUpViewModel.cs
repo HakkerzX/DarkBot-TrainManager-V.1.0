@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace DarkBotTrainManager.ViewModel
 {
-    public class FirstStartViewModel : DefaultNotifyPropertyChangedService
+    public class FirstStartUpViewModel : DefaultNotifyPropertyChangedService
     {
-        private FirstStart _firstStart;
-        public FirstStartViewModel(FirstStart firstStart)
+        private FirstStartUp _firstStart;
+        public FirstStartUpViewModel(FirstStartUp firstStart)
         {
             _firstStart = firstStart;
         }
