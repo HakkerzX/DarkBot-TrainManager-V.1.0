@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DarkBotTrainManager.Services;
+using Newtonsoft.Json;
 
 namespace DarkBotTrainManager.Model
 {
-    public class FirstStartUp : DefaultNotifyPropertyChangedService
+    [JsonObject(MemberSerialization.OptIn)]
+    public class FirstStartUp : BaseNotifyPropertyChangedService
     {
         private string _darkBotFilePath;
         private string _darkBotInstallFolderPath;
@@ -21,7 +23,7 @@ namespace DarkBotTrainManager.Model
                 OnPropertyChanged(nameof(DarkBotFilePath));
             }
         }
-
+        [JsonProperty]
         public string DarkBotInstallFolderPath
         {
             get { return _darkBotInstallFolderPath; }

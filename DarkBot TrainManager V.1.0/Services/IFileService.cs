@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DarkBotTrainManager.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,7 @@ namespace DarkBotTrainManager.Services
 {
     public interface IFileService
     {
+        void Save(string path, FirstStartUp firstStartUp);
+        void Create(string path);
     }
 }

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DarkBotTrainManager.ViewModel;
 using DarkBotTrainManager.Model;
+using DarkBotTrainManager.Services;
 
 namespace DarkBotTrainManager.View
 {
@@ -25,7 +26,7 @@ namespace DarkBotTrainManager.View
         {
             InitializeComponent();
 
-            DataContext = new FirstStartUpViewModel(firstStartUp);
+            DataContext = new FirstStartUpViewModel(firstStartUp, new FirstStartUpFileService(), new DialogService());
         }
     }
 }

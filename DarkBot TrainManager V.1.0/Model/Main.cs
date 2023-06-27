@@ -7,7 +7,7 @@ using DarkBotTrainManager.Services;
 
 namespace DarkBotTrainManager.Model
 {
-    public class Main : DefaultNotifyPropertyChangedService
+    public class Main : BaseNotifyPropertyChangedService
     {
     }
 }

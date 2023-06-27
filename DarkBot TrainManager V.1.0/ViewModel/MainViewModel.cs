@@ -9,7 +9,6 @@ namespace DarkBotTrainManager.ViewModel
 {
     public class MainViewModel
     {
-        private Main _main;
 
 
     }
