@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DarkBotTrainManager.Model;
 
 namespace DarkBotTrainManager.View
 {
@@ -22,6 +23,12 @@ namespace DarkBotTrainManager.View
         public Main()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            FirstStart firstStart = new FirstStart(new FirstStartUp());
+            firstStart.Show();
         }
     }
 }

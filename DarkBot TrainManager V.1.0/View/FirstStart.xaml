@@ -11,8 +11,50 @@
         TextElement.FontSize="14"
         FontFamily="{materialDesign:MaterialDesignFont}"
         mc:Ignorable="d"
-        Title="FirstStart" Height="450" Width="800">
+        Title="FirstStart"
+        Height="450"
+        Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="0.3*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*" />
+            <RowDefinition Height="0.2*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+
+        <TextBox Grid.Column="0"
+                 Grid.Row="0"
+                 Style="{DynamicResource MaterialDesignTextBox}"
+                 Margin="10"
+                 materialDesign:HintAssist.Hint="File path"
+                 Text="{Binding DarkBotFilePath}"/>
+        <Button Grid.Column="1"
+                Grid.Row="0"
+                Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                Margin="10"
+                Content="Open File"
+                Command="{Binding SelectBotFile}" />
+
+        <TextBox Grid.Column="0"
+                 Grid.Row="1"
+                 Style="{DynamicResource MaterialDesignTextBox}"
+                 Margin="10"
+                 materialDesign:HintAssist.Hint="Folder path"
+                 Text="{Binding DarkBotInstallFolderPath}"/>
+
+        <Button Grid.Column="1"
+                Grid.Row="1"
+                Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                Margin="10"
+                Content="Open Folder"
+                Command="{Binding SelectTrainFolder}"/>
+
+
+
+
     </Grid>
 </Window>

@@ -10,6 +10,6 @@ namespace DarkBotTrainManager.Services
     public interface IFileService
     {
         void Save(string path, FirstStartUp firstStartUp);
-        void Create(string path);
+        void CreateBotFolder(string trainPath, string newBotPath);
     }
 }
