@@ -18,7 +18,6 @@ namespace DarkBotTrainManager.Services
         public void CreateBotFolder(string trainPath, string newBotPath)
         {
             var trainDirectory = new DirectoryInfo(trainPath);
-
             trainDirectory.CreateSubdirectory(newBotPath);
 
         }

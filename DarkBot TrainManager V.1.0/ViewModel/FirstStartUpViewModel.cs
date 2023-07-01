@@ -1,10 +1,5 @@
 ﻿using DarkBotTrainManager.Model;
 using DarkBotTrainManager.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DarkBotTrainManager.ViewModel
 {
@@ -12,15 +7,17 @@ namespace DarkBotTrainManager.ViewModel
     {
         private const string _firstStartConfigJsonFilePath = $"firstStartConfig.json";
 
-        private FirstStartUp _firstUpStart;
+        private FirstStartUp _firstStartUp;
 
         private IFileService _fileService;
         private IDialogService _dialogService;
-        public FirstStartUpViewModel(FirstStartUp firstStarUp, IFileService fileService, IDialogService dialogService)
+        private IAppService _appService;
+        public FirstStartUpViewModel(FirstStartUp firstStarUp, IFileService fileService, IDialogService dialogService, IAppService appService)
         {
-            _firstUpStart = firstStarUp;
+            _firstStartUp = firstStarUp;
             _fileService = fileService;
             _dialogService = dialogService;
+            _appService = appService;
         }
 
         /// <summary>
@@ -36,9 +33,22 @@ namespace DarkBotTrainManager.ViewModel
                 return _saveCommand ??
                 (_saveCommand = new RelayCommandService(obj =>
                 {
-                    _fileService.Save(_firstStartConfigJsonFilePath, _firstUpStart);
+                    _fileService.Save(_firstStartConfigJsonFilePath, _firstStartUp);
                 }
                 ));
+            }
+        }
+
+        private RelayCommandService _cancelCommand;
+        public RelayCommandService CancelCommand
+        {
+            get
+            {
+                return _cancelCommand ??
+                (_cancelCommand = new RelayCommandService(obj =>
+                {
+                    _appService.CloseApp();
+                }));
             }
         }
 
@@ -76,7 +86,6 @@ namespace DarkBotTrainManager.ViewModel
             }
         }
 
-
         #endregion
 
         /// <summary>
@@ -86,20 +95,20 @@ namespace DarkBotTrainManager.ViewModel
 
         public string DarkBotFilePath
         {
-            get { return _firstUpStart.DarkBotFilePath; }
+            get { return _firstStartUp.DarkBotFilePath; }
             set
             {
-                _firstUpStart.DarkBotFilePath = value;
+                _firstStartUp.DarkBotFilePath = value;
                 OnPropertyChanged(nameof(DarkBotFilePath));
             }
         }
 
         public string DarkBotInstallFolderPath
         {
-            get { return _firstUpStart.DarkBotInstallFolderPath; }
+            get { return _firstStartUp.DarkBotInstallFolderPath; }
             set
             {
-                _firstUpStart.DarkBotInstallFolderPath = value;
+                _firstStartUp.DarkBotInstallFolderPath = value;
                 OnPropertyChanged(nameof(DarkBotInstallFolderPath));
             }
         }

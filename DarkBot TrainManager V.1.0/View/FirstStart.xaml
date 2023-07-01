@@ -14,14 +14,33 @@
         Title="FirstStart"
         Height="450"
         Width="800">
+    <Window.Resources>
+        <Style x:Key="MaterialDesignTextBox"
+               BasedOn="{StaticResource MaterialDesignTextBox}"
+               TargetType="{x:Type TextBox}">
+            <Setter Property="Margin"
+                    Value="10" />
+            <Setter Property="MaxHeight"
+                    Value="32" />
+        </Style>
+        <Style x:Key="MaterialDesignRaisedButton"
+               BasedOn="{StaticResource MaterialDesignRaisedButton}"
+               TargetType="{x:Type Button}">
+            <Setter Property="Margin"
+                    Value="10" />
+            <Setter Property="MinWidth"
+                    Value="100" />
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="0.3*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.2*" />
-            <RowDefinition Height="0.2*" />
+            <RowDefinition Height="0.3*" />
+            <RowDefinition Height="0.3*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -29,29 +48,36 @@
         <TextBox Grid.Column="0"
                  Grid.Row="0"
                  Style="{DynamicResource MaterialDesignTextBox}"
-                 Margin="10"
                  materialDesign:HintAssist.Hint="File path"
-                 Text="{Binding DarkBotFilePath}"/>
+                 Text="{Binding DarkBotFilePath}" />
         <Button Grid.Column="1"
                 Grid.Row="0"
-                Style="{StaticResource MaterialDesignFlatLightBgButton}"
-                Margin="10"
+                Style="{StaticResource MaterialDesignRaisedButton}"
                 Content="Open File"
                 Command="{Binding SelectBotFile}" />
-
         <TextBox Grid.Column="0"
                  Grid.Row="1"
                  Style="{DynamicResource MaterialDesignTextBox}"
-                 Margin="10"
-                 materialDesign:HintAssist.Hint="Folder path"
-                 Text="{Binding DarkBotInstallFolderPath}"/>
-
+                 materialDesign:HintAssist.Hint="Install Folder path"
+                 Text="{Binding DarkBotInstallFolderPath}" />
         <Button Grid.Column="1"
                 Grid.Row="1"
-                Style="{StaticResource MaterialDesignFlatLightBgButton}"
-                Margin="10"
+                Style="{StaticResource MaterialDesignRaisedButton}"
                 Content="Open Folder"
-                Command="{Binding SelectTrainFolder}"/>
+                Command="{Binding SelectTrainFolder}" />
+        <WrapPanel Grid.Column="0"
+                   Grid.Row="2"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom">
+            <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                    Command="{Binding SaveCommand}">
+                Confirm
+            </Button>
+            <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                    Command="{Binding CancelCommand}">
+                Cancel
+            </Button>
+        </WrapPanel>
 
 
 
