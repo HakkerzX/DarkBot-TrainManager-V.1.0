@@ -35,12 +35,12 @@ namespace DarkBotTrainManager.ViewModel
                 return _saveCommand ??
                 (_saveCommand = new RelayCommandService(obj =>
                 {
-                    string trainFolderName = String.Join(@"\", DarkBotInstallFolderPath.Split('\\').Reverse().Take(1));
+                    string trainFolderName = String.Join(@"\", DarkBotInstallFolderPath.Split('\\').Reverse().Take(1));//TODO|||в отдельный сервис
                     _fileService.CreateFolder(_dialogService.FolderPath, $"{trainFolderName}");
 
                     string newBot = "Bot1";
                     _fileService.CreateFolder(DarkBotInstallFolderPath, newBot);
-                    _fileService.CreateBotFile($"{DarkBotInstallFolderPath}\\{newBot}", DarkBotFilePath);
+                    _fileService.CreateFile($"{DarkBotInstallFolderPath}\\{newBot}", DarkBotFilePath);
 
                     _fileService.Save(_firstStartConfigJsonFilePath, _firstStartUp);
                 }

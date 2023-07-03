@@ -11,6 +11,6 @@ namespace DarkBotTrainManager.Services
     {
         void Save(string path, FirstStartUp firstStartUp);
         void CreateFolder(string targetDitrectoryPath, string newFolderName);
-        void CreateBotFile(string botFolderPath, string botFilePath);
+        void CreateFile(string botFolderPath, string botFilePath);
     }
 }

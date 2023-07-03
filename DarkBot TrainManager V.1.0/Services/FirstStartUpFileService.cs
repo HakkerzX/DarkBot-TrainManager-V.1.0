@@ -23,12 +23,13 @@ namespace DarkBotTrainManager.Services
             }
         }
 
-        public void CreateBotFile(string botFolderPath, string botFilePath)
+        public void CreateFile(string targetFolderPath, string filePath)
         {
-            FileInfo botFile = new FileInfo(botFilePath);
-            if (botFile.Exists)
+            FileInfo file = new FileInfo(filePath);
+            if (file.Exists)
             {
-                botFile.CopyTo(botFolderPath, true);
+                targetFolderPath = $"{targetFolderPath}\\{file.Name}";
+                file.CopyTo(targetFolderPath, true);
             }
         }
     }
