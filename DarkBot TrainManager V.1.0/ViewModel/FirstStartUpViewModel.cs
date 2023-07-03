@@ -1,5 +1,7 @@
 ﻿using DarkBotTrainManager.Model;
 using DarkBotTrainManager.Services;
+using System;
+using System.Linq;
 
 namespace DarkBotTrainManager.ViewModel
 {
@@ -33,6 +35,13 @@ namespace DarkBotTrainManager.ViewModel
                 return _saveCommand ??
                 (_saveCommand = new RelayCommandService(obj =>
                 {
+                    string trainFolderName = String.Join(@"\", DarkBotInstallFolderPath.Split('\\').Reverse().Take(1));
+                    _fileService.CreateFolder(_dialogService.FolderPath, $"{trainFolderName}");
+
+                    string newBot = "Bot1";
+                    _fileService.CreateFolder(DarkBotInstallFolderPath, newBot);
+                    _fileService.CreateBotFile($"{DarkBotInstallFolderPath}\\{newBot}", DarkBotFilePath);
+
                     _fileService.Save(_firstStartConfigJsonFilePath, _firstStartUp);
                 }
                 ));
@@ -62,7 +71,7 @@ namespace DarkBotTrainManager.ViewModel
                 {
                     if (_dialogService.OpenFolderDialog() == true)
                     {
-                        DarkBotInstallFolderPath = _dialogService.FolderPath;
+                        DarkBotInstallFolderPath = $"{_dialogService.FolderPath}\\DarkBotTrain";
                     }
                 }
                 ));

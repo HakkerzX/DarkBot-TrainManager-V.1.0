@@ -1,7 +1,6 @@
 ﻿using DarkBotTrainManager.Model;
 using Newtonsoft.Json;
 using System.IO;
-using System.Windows.Input;
 
 namespace DarkBotTrainManager.Services
 {
@@ -15,11 +14,22 @@ namespace DarkBotTrainManager.Services
                 serializer.Serialize(streamWriter, firstStartUp);
             }
         }
-        public void CreateBotFolder(string trainPath, string newBotPath)
+        public void CreateFolder(string targetDitrectoryPath, string newFolderName)
         {
-            var trainDirectory = new DirectoryInfo(trainPath);
-            trainDirectory.CreateSubdirectory(newBotPath);
+            DirectoryInfo targetFolder = new DirectoryInfo(targetDitrectoryPath);
+            if (targetFolder.Exists)
+            {
+                targetFolder.CreateSubdirectory(newFolderName);
+            }
+        }
 
+        public void CreateBotFile(string botFolderPath, string botFilePath)
+        {
+            FileInfo botFile = new FileInfo(botFilePath);
+            if (botFile.Exists)
+            {
+                botFile.CopyTo(botFolderPath, true);
+            }
         }
     }
 }

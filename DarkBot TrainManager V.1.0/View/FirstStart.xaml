@@ -65,7 +65,7 @@
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 Content="Open Folder"
                 Command="{Binding SelectTrainFolder}" />
-        <WrapPanel Grid.Column="0"
+        <WrapPanel Grid.ColumnSpan="2"
                    Grid.Row="2"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Bottom">
