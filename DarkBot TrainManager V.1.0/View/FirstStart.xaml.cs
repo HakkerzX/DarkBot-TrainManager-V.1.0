@@ -26,7 +26,7 @@ namespace DarkBotTrainManager.View
         {
             InitializeComponent();
 
-            DataContext = new FirstStartUpViewModel(firstStartUp, new FirstStartUpFileService(), new DialogService(), new AppService());
+            DataContext = new FirstStartUpViewModel(firstStartUp, new FirstStartUpFileService(), new DialogService(), new AppService(), new PathCutService());
         }
     }
 }

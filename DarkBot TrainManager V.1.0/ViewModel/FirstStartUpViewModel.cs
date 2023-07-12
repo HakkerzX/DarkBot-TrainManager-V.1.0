@@ -1,7 +1,5 @@
 ﻿using DarkBotTrainManager.Model;
 using DarkBotTrainManager.Services;
-using System;
-using System.Linq;
 
 namespace DarkBotTrainManager.ViewModel
 {
@@ -14,12 +12,14 @@ namespace DarkBotTrainManager.ViewModel
         private IFileService _fileService;
         private IDialogService _dialogService;
         private IAppService _appService;
-        public FirstStartUpViewModel(FirstStartUp firstStarUp, IFileService fileService, IDialogService dialogService, IAppService appService)
+        private IPathCutService _pathCutService;
+        public FirstStartUpViewModel(FirstStartUp firstStarUp, IFileService fileService, IDialogService dialogService, IAppService appService, IPathCutService pathCutService)
         {
             _firstStartUp = firstStarUp;
             _fileService = fileService;
             _dialogService = dialogService;
             _appService = appService;
+            _pathCutService = pathCutService;
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace DarkBotTrainManager.ViewModel
                 return _saveCommand ??
                 (_saveCommand = new RelayCommandService(obj =>
                 {
-                    string trainFolderName = String.Join(@"\", DarkBotInstallFolderPath.Split('\\').Reverse().Take(1));//TODO|||в отдельный сервис
+                    string trainFolderName = _pathCutService.GetFolderNameFromPath(DarkBotInstallFolderPath);
                     _fileService.CreateFolder(_dialogService.FolderPath, $"{trainFolderName}");
 
                     string newBot = "Bot1";
