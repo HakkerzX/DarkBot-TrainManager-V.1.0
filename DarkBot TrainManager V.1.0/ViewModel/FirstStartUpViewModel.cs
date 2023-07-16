@@ -22,10 +22,8 @@ namespace DarkBotTrainManager.ViewModel
             _pathCutService = pathCutService;
         }
 
-        /// <summary>
-        /// Commands
-        /// </summary>
-        #region
+
+        #region  Commands
 
         private RelayCommandService _saveCommand;
         public RelayCommandService SaveCommand
@@ -97,10 +95,8 @@ namespace DarkBotTrainManager.ViewModel
 
         #endregion
 
-        /// <summary>
-        /// Fields
-        /// </summary>
-        #region 
+
+        #region Fields
 
         public string DarkBotFilePath
         {
