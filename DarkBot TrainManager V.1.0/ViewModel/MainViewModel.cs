@@ -5,16 +5,17 @@ namespace DarkBotTrainManager.ViewModel
 {
     public class MainViewModel : BaseNotifyPropertyChangedService
     {
-        private Visibility _visibilityTabStart;
+        private Visibility _visibilityTabStart = Visibility.Hidden;
 
-        private FirstStartUpViewModel _firstStartUp = new(new FirstStartUpFileService(), new DialogService(), new AppService(), new PathCutService());
-
-
+        public MainViewModel()
+        {
+            FirstStartUpViewModel = new(new FirstStartUpFileService(), new DialogService(), new AppService(), new PathCutService());
+        }
 
 
         #region Properties
 
-        public FirstStartUpViewModel FirstStartUpViewModel => _firstStartUp;
+        public FirstStartUpViewModel FirstStartUpViewModel { get; private set; }
 
         public Visibility VisibilityTabStart
         {
@@ -32,13 +33,13 @@ namespace DarkBotTrainManager.ViewModel
 
         #region Commands
 
-        private RelayCommandService _hideCommand;
-        public RelayCommandService HideCommand
+        private RelayCommand _hideCommand;
+        public RelayCommand HideCommand
         {
             get
             {
                 return _hideCommand ??
-                       (_hideCommand = new RelayCommandService(obj =>
+                       (_hideCommand = new RelayCommand(obj =>
                            {
                                VisibilityTabStart = Visibility.Collapsed;
                            }
@@ -46,13 +47,13 @@ namespace DarkBotTrainManager.ViewModel
             }
         }
 
-        private RelayCommandService _showCommand;
-        public RelayCommandService ShowCommand
+        private RelayCommand _showCommand;
+        public RelayCommand ShowCommand
         {
             get
             {
                 return _showCommand ??
-                       (_showCommand = new RelayCommandService(obj =>
+                       (_showCommand = new RelayCommand(obj =>
                            {
                                VisibilityTabStart = Visibility.Visible;
                            }

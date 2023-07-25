@@ -3,12 +3,12 @@ using System.Windows.Input;
 
 namespace DarkBotTrainManager.Services
 {
-    public class RelayCommandService : ICommand
+    public class RelayCommand : ICommand
     {
         private Action<object> _execute;
         private Func<object, bool> _canExecute;
 
-        public RelayCommandService(Action<object> execute, Func<object, bool> canExecute = null)
+        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
         {
             _execute = execute;
             _canExecute = canExecute;

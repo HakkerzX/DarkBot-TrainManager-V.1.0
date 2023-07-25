@@ -25,13 +25,13 @@ namespace DarkBotTrainManager.ViewModel
 
         #region  Commands
 
-        private RelayCommandService _saveCommand;
-        public RelayCommandService SaveCommand
+        private RelayCommand _saveCommand;
+        public RelayCommand SaveCommand
         {
             get
             {
                 return _saveCommand ??
-                (_saveCommand = new RelayCommandService(obj =>
+                (_saveCommand = new RelayCommand(obj =>
                 {
                     string trainFolderName = _pathCutService.GetFolderNameFromPath(DarkBotInstallFolderPath);
                     _fileService.CreateFolder(_dialogService.FolderPath, $"{trainFolderName}");
@@ -46,26 +46,26 @@ namespace DarkBotTrainManager.ViewModel
             }
         }
 
-        private RelayCommandService _cancelCommand;
-        public RelayCommandService CancelCommand
+        private RelayCommand _cancelCommand;
+        public RelayCommand CancelCommand
         {
             get
             {
                 return _cancelCommand ??
-                (_cancelCommand = new RelayCommandService(obj =>
+                (_cancelCommand = new RelayCommand(obj =>
                 {
                     _appService.CloseApp();
                 }));
             }
         }
 
-        private RelayCommandService _selectTrainFolder;
-        public RelayCommandService SelectTrainFolder
+        private RelayCommand _selectTrainFolder;
+        public RelayCommand SelectTrainFolder
         {
             get
             {
                 return _selectTrainFolder ??
-                (_selectTrainFolder = new RelayCommandService(obj =>
+                (_selectTrainFolder = new RelayCommand(obj =>
                 {
                     if (_dialogService.OpenFolderDialog() == true)
                     {
@@ -76,13 +76,13 @@ namespace DarkBotTrainManager.ViewModel
             }
         }
 
-        private RelayCommandService _selectBotFile;
-        public RelayCommandService SelectBotFile
+        private RelayCommand _selectBotFile;
+        public RelayCommand SelectBotFile
         {
             get
             {
                 return _selectBotFile ??
-                (_selectBotFile = new RelayCommandService(obj =>
+                (_selectBotFile = new RelayCommand(obj =>
                 {
                     if (_dialogService.OpenFileDialog() == true)
                     {
@@ -100,7 +100,10 @@ namespace DarkBotTrainManager.ViewModel
 
         public string DarkBotFilePath
         {
-            get { return _firstStartUp.DarkBotFilePath; }
+            get
+            {
+                return _firstStartUp.DarkBotFilePath;
+            }
             set
             {
                 _firstStartUp.DarkBotFilePath = value;
@@ -110,7 +113,10 @@ namespace DarkBotTrainManager.ViewModel
 
         public string DarkBotInstallFolderPath
         {
-            get { return _firstStartUp.DarkBotInstallFolderPath; }
+            get
+            {
+                return _firstStartUp.DarkBotInstallFolderPath;
+            }
             set
             {
                 _firstStartUp.DarkBotInstallFolderPath = value;

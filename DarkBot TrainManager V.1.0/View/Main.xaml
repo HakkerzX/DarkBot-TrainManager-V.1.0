@@ -7,8 +7,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:DarkBotTrainManager.View.Controls"
         Title="Main"
-        Width="800"
-        Height="450"
+        Width="900"
+        Height="500"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         TextElement.FontSize="13"
@@ -37,21 +37,22 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width=".4*" />
         </Grid.ColumnDefinitions>
-        <TabControl Grid.Column="0"
-                    Style="{StaticResource MaterialDesignFilledTabControl}"
-                    TabStripPlacement="Left">
-            
-            <TabItem Header="First" />
-            <TabItem Header="Second" />
-            <TabItem Header="Hidden Third"
-                     Visibility="{Binding VisibilityTabStart}">
-                <materialDesign:Card>
+        <materialDesign:Card Grid.Column="0">
+            <TabControl  Style="{StaticResource MaterialDesignFilledTabControl}"
+                         TabStripPlacement="Left">
+
+                <TabItem Header="Bots" />
+                <TabItem Header="Plugins" />
+                <TabItem Header="First start"
+                         Visibility="{Binding VisibilityTabStart}">
                     <controls:FirstStartControl DataContext="{Binding FirstStartUpViewModel}"
                                                 Height="200"
                                                 VerticalAlignment="Top" />
-                </materialDesign:Card>
-            </TabItem>
-        </TabControl>
+
+                </TabItem>
+            </TabControl>
+        </materialDesign:Card>
+
         <materialDesign:Card Grid.Column="1">
             <StackPanel>
                 <Button Command="{Binding HideCommand}"
