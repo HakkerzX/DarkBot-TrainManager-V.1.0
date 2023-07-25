@@ -5,17 +5,32 @@ namespace DarkBotTrainManager.ViewModel
 {
     public class MainViewModel : BaseNotifyPropertyChangedService
     {
-        private Visibility _visiblityTabStart;
+        private Visibility _visibilityTabStart;
 
-        public Visibility VisiblityTabStart
+        private FirstStartUpViewModel _firstStartUp = new(new FirstStartUpFileService(), new DialogService(), new AppService(), new PathCutService());
+
+
+
+
+        #region Properties
+
+        public FirstStartUpViewModel FirstStartUpViewModel => _firstStartUp;
+
+        public Visibility VisibilityTabStart
         {
-            get { return _visiblityTabStart; }
+            get { return _visibilityTabStart; }
             set
             {
-                _visiblityTabStart = value;
-                OnPropertyChanged(nameof(VisiblityTabStart));
+                _visibilityTabStart = value;
+                OnPropertyChanged(nameof(VisibilityTabStart));
             }
         }
+
+        #endregion
+
+
+
+        #region Commands
 
         private RelayCommandService _hideCommand;
         public RelayCommandService HideCommand
@@ -23,11 +38,11 @@ namespace DarkBotTrainManager.ViewModel
             get
             {
                 return _hideCommand ??
-                (_hideCommand = new RelayCommandService(obj =>
-                {
-                    VisiblityTabStart = Visibility.Collapsed;
-                }
-                ));
+                       (_hideCommand = new RelayCommandService(obj =>
+                           {
+                               VisibilityTabStart = Visibility.Collapsed;
+                           }
+                       ));
             }
         }
 
@@ -37,13 +52,15 @@ namespace DarkBotTrainManager.ViewModel
             get
             {
                 return _showCommand ??
-                (_showCommand = new RelayCommandService(obj =>
-                {
-                    VisiblityTabStart = Visibility.Visible;
-                }
-                ));
+                       (_showCommand = new RelayCommandService(obj =>
+                           {
+                               VisibilityTabStart = Visibility.Visible;
+                           }
+                       ));
             }
         }
+
+        #endregion
 
     }
 }

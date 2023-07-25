@@ -7,15 +7,15 @@ namespace DarkBotTrainManager.ViewModel
     {
         private const string _firstStartConfigJsonFilePath = $"firstStartConfig.json";
 
-        private FirstStartUp _firstStartUp;
+        private FirstStartUp _firstStartUp = new FirstStartUp();
+
 
         private IFileService _fileService;
         private IDialogService _dialogService;
         private IAppService _appService;
         private IPathCutService _pathCutService;
-        public FirstStartUpViewModel(FirstStartUp firstStarUp, IFileService fileService, IDialogService dialogService, IAppService appService, IPathCutService pathCutService)
+        public FirstStartUpViewModel(IFileService fileService, IDialogService dialogService, IAppService appService, IPathCutService pathCutService)
         {
-            _firstStartUp = firstStarUp;
             _fileService = fileService;
             _dialogService = dialogService;
             _appService = appService;

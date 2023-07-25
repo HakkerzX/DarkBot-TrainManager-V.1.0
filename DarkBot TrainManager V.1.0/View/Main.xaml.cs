@@ -14,12 +14,5 @@ namespace DarkBotTrainManager.View
             InitializeComponent();
             DataContext = new MainViewModel();
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-            FirstStart firstStart = new FirstStart(new FirstStartUp());
-            firstStart.Show();
-        }
     }
 }
